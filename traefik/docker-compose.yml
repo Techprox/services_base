@@ -33,8 +33,6 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock
         networks:
             - network-swarm
-        secrets:
-            - traefik_acesso
         deploy:
             mode: replicated
             replicas: 1
@@ -50,7 +48,7 @@ services:
                 - traefik.http.routers.traefik.service=api@internal
                 # Configurações de solicitação de senha
                 - traefik.http.routers.traefik.middlewares=test-auth
-                - traefik.http.middlewares.test-auth.basicauth.users=techprox:$2y$05$ITqAIGjKT8u982jW319jmuLAYJc9WZinVs2hGAn0jmE9c572w0B.C
+                - traefik.http.middlewares.test-auth.basicauth.users=techprox:$2y$05$ujBdvnLDlGTPYRlbFk1/lOg9BZWZ2w0KbxnxnBJFOE0fSSfd0cdW2
                 # Habilitando porta
                 - traefik.http.services.traefik.loadbalancer.server.port=8080
                 # Habilitando Checagem
@@ -60,6 +58,3 @@ services:
 networks:
     network-swarm:
         external: true
-secrets:
-  traefik_acesso:
-    external: true
