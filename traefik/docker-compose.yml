@@ -34,7 +34,7 @@ services:
         networks:
             - network-swarm
         secrets:
-            - traefik_secret
+            - traefik_acesso
         deploy:
             mode: replicated
             replicas: 1
@@ -50,7 +50,7 @@ services:
                 - traefik.http.routers.traefik.service=api@internal
                 # Configurações de solicitação de senha
                 - traefik.http.routers.traefik.middlewares=test-auth
-                - traefik.http.middlewares.test-auth.basicauth.users=techprox:traefik_secret
+                - traefik.http.middlewares.test-auth.basicauth.users=techprox:traefik_acesso
                 # Habilitando porta
                 - traefik.http.services.traefik.loadbalancer.server.port=8080
                 # Habilitando Checagem
@@ -61,5 +61,5 @@ networks:
     network-swarm:
         external: true
 secrets:
-  traefik_secret:
+  traefik_acesso:
     external: true
