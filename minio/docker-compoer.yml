@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
     minio:
@@ -11,13 +11,13 @@ services:
             MINIO_ROOT_USER: techprox
             MINIO_ROOT_PASSWORD: 9dZKLAegkkMpUjvTkA3z
             MINIO_BROWSER_REDIRECT_URL:
-        command:  minio server /data --console-address ":9091" --address ":9090"
+        command: minio server /data --console-address ":9091" --address ":9090"
         deploy:
             mode: replicated
             replicas: 1
             placement:
                 constraints:
-                - node.hostname == docker-1-1
+                    - node.hostname == docker-1-1
             labels:
                 # Configurações do serviço
                 #-------------------------
@@ -29,5 +29,5 @@ services:
                 - traefik.http.routers.minio-admin.service=minio-admin-service
                 - traefik.http.services.minio-admin-service.loadbalancer.server.port=9091
 networks:
-  network-swarm:
-    external: true
+    network-swarm:
+        external: true
