@@ -50,7 +50,7 @@ services:
                 - traefik.http.routers.traefik.service=api@internal
                 # Configurações de solicitação de senha
                 - traefik.http.routers.traefik.middlewares=test-auth
-                - traefik.http.middlewares.test-auth.basicauth.users=techprox:$2y$05$Mv51AHAlGrOSF3vBCE.vzuEP24of9H/BzmjdI2j.m10zY/BC5zPte
+                - traefik.http.middlewares.test-auth.basicauth.users=techprox:$2y$05$ITqAIGjKT8u982jW319jmuLAYJc9WZinVs2hGAn0jmE9c572w0B.C
                 # Habilitando porta
                 - traefik.http.services.traefik.loadbalancer.server.port=8080
                 # Habilitando Checagem
