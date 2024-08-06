@@ -49,8 +49,8 @@ services:
                 - traefik.http.routers.traefik.rule=Host(`tf.techprox.com.br`)
                 - traefik.http.routers.traefik.service=api@internal
                 # Configurações de solicitação de senha
-                # - traefik.http.routers.traefik.middlewares=test-auth
-                # - traefik.http.middlewares.test-auth.basicauth.users=traefik_acesso
+                - traefik.http.routers.traefik.middlewares=test-auth
+                - traefik.http.middlewares.test-auth.basicauth.users=techprox:$2y$05$Mv51AHAlGrOSF3vBCE.vzuEP24of9H/BzmjdI2j.m10zY/BC5zPte
                 # Habilitando porta
                 - traefik.http.services.traefik.loadbalancer.server.port=8080
                 # Habilitando Checagem
